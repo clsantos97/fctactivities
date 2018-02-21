@@ -27,7 +27,6 @@
             <field name="model">res.users</field>
             <field name="inherit_id" ref="base.view_users_simple_form"/>
             <field name="arch" type="xml">
-
                 <group>
                     <field name="isPupil" attrs="{'invisible': [('isTutor','=' ,True)]}" />
                     <field name="isTutor" attrs="{'invisible': [('isPupil', '=' ,True)]}" />
@@ -36,15 +35,9 @@
                     <field name="fctpartner" attrs="{'invisible': [('isPupil', '=' ,False)]}"/>
                 </group>
                 
-<!--                <notebook position="inside">
-                    <page string="Activities">
-                        <group>
-                            <field name="activities"/>
-                        </group>
-                    </page>
-                </notebook>-->
-
-
+                <group>
+                    <field name="activities"/>
+                </group>
             </field>
         </record> 
         
