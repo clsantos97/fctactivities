@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- form view -->
+        <record model="ir.ui.view" id="activity_form_view">
+            <field name="name">activity.form</field>
+            <field name="model">fctactivities.activity</field>
+            <field name="arch" type="xml">
+                <form string="Activity Form">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="duration"/>
+                            <field name="owner" readonly="1"/>
+                        </group>
+                        <notebook>
+                            <page string="Description">
+                                <field name="description"/>
+                            </page>
+                            <page string="Remarks">
+                                <field name="remarks"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- search view -->
+        <record model="ir.ui.view" id="activity_search_view">
+            <field name="name">activity.search</field>
+            <field name="model">fctactivities.activity</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="description"/>
+                </search>
+            </field>
+        </record>
+        <!-- Activities tree view,
+        override the automatically generated list view for activities -->
+        <record model="ir.ui.view" id="activity_tree_view">
+            <field name="name">activity.tree</field>
+            <field name="model">fctactivities.activity</field>
+            <field name="arch" type="xml">
+                <tree string="Activity Tree">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="date"/>
+                    <field name="duration"/>
+                </tree>
+            </field>
+        </record>
+        <!-- window action -->
+        <!--
+            The following tag is an action definition for a "window action",
+            that is an action opening a view or a set of views
+        -->
+        <record model="ir.actions.act_window" id="activities_list_action">
+            <field name="name">Activities</field>
+            <field name="res_model">fctactivities.activity</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first activity
+                </p>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="partners_list_action">
+            <field name="name">Partners</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('isFCTPartner','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first partner</p>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="pupils_list_action">
+            <field name="name">Pupils</field>
+            <field name="res_model">res.users</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('isPupil','=','True')]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first pupil</p>
+            </field>
+        </record>
+        <!-- top level menu: no parent -->
+        <menuitem id="main_fctactivities_menu" name="FCT Activities"/>
+        <!-- A first level in the left side menu is needed
+        before using action= attribute -->
+        <menuitem id="fctactivities_menu" name="FCT Activities"
+                  parent="main_fctactivities_menu"/>
+        
+        <!-- MENU ITEMS -->
+        <menuitem id="activities_menu" name="Activities" parent="fctactivities_menu"
+                  action="activities_list_action"/>
+        <menuitem id="pupils_menu" name="Pupils" parent="fctactivities_menu"
+                  action="pupils_list_action"/>
+        <menuitem id="partner_menu" name ="Partners" parent="fctactivities_menu"
+                  action="partners_list_action"/>
+        
+
+    </data>
+</odoo>

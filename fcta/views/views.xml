@@ -1,0 +1,59 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="fctactivities.list">
+      <field name="name">fctactivities list</field>
+      <field name="model">fctactivities.fctactivities</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="fctactivities.action_window">
+      <field name="name">fctactivities window</field>
+      <field name="res_model">fctactivities.fctactivities</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="fctactivities.action_server">
+      <field name="name">fctactivities server</field>
+      <field name="model_id" ref="model_fctactivities_fctactivities"/>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="fctactivities" id="fctactivities.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="fctactivities.menu_1" parent="fctactivities.menu_root"/>
+    <menuitem name="Menu 2" id="fctactivities.menu_2" parent="fctactivities.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="fctactivities.menu_1_list" parent="fctactivities.menu_1"
+              action="fctactivities.action_window"/>
+    <menuitem name="Server to list" id="fctactivities" parent="fctactivities.menu_2"
+              action="fctactivities.action_server"/>
+    -->
+  </data>
+</odoo>
